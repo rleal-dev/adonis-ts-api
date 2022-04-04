@@ -12,7 +12,7 @@ export default class User extends BaseModel {
   @column()
   public email: string
 
-  @column ({ serializeAs: null })
+  @column({ serializeAs: null })
   public password: string
 
   @column.dateTime({ autoCreate: true })
@@ -20,6 +20,9 @@ export default class User extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @column.dateTime()
+  public deletedAt: DateTime
 
   @beforeSave()
   public static async hashPassword(user: User) {
