@@ -27,5 +27,8 @@ Route.group(() => {
   Route.resource('users', 'UserController').apiOnly()
   Route.resource('roles', 'RoleController').apiOnly()
   Route.resource('permissions', 'PermissionController').apiOnly()
+  Route.resource('users.roles', 'UserRoleController').apiOnly();
+  Route.resource('roles.permissions', 'RolePermissionController').apiOnly();
+
   Route.resource('projects', 'ProjectController').apiOnly()
 }).middleware('auth')

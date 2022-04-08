@@ -7,7 +7,7 @@ export default class Roles extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
       table.string('name', 255).notNullable()
-      table.text('desciption').nullable()
+      table.text('description').nullable()
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

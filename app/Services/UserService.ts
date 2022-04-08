@@ -1,6 +1,6 @@
 import User from 'App/Models/User'
 
-class UserService {
+export default class UserService {
   public async findAll(request) {
     const page = request.input('page', 1)
 
@@ -11,25 +11,20 @@ class UserService {
     return await User.findOrFail(id)
   }
 
-  public async create(payload) {
-    return User.create(payload)
+  public async create(payload: any) {
+    return await User.create(payload)
   }
 
   public async update(id: Number, payload: any) {
-    const user: any = await User.findOrFail(id)
-
-    user.name = payload.name
-    user.email = payload.email
-    user.password = payload.password
+    const user: User = await User.findOrFail(id)
+    user.merge(payload)
 
     return user.save()
   }
 
   public async delete(id: Number) {
-    const user: any = await User.findOrFail(id)
+    const user: User = await User.findOrFail(id)
 
     return user.delete()
   }
 }
-
-export default UserService
